@@ -193,7 +193,7 @@
           <Search name="OpenSearch" />
         </FullText>
         <Protocols>
-          <Protocol value="oEmbed" />
+          <Protocol value="oEmbed" endpoint="https://viewer.response.org/oembed/" />
         </Protocols>
         <Authentication> <!-- Authentication Protocols -->
           <Protocol name="oAuth" />
@@ -215,6 +215,11 @@
         <MaxTextureSize>4096</MaxTextureSize>
       </GUI>
       <SupportedOptions>
+        <WebBrowsers>
+          <WebBrowser name="Chrome" version="120.0.0.0" device="Windows" userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" />
+          <WebBrowser name="Safari" version="604.1" device="iPhone" userAgent="Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1" />
+          <WebBrowser name="Firefox" version="121.0" device="Linux" userAgent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0" />       
+        </WebBrowsers>
         <Scene> <!-- Scene Setup and Update -->
           <Autoload value="True" /> <!-- autoload asset on initialization, default is false (Rene (Arctur)) -->
           <Zoom value="True" />
@@ -378,9 +383,10 @@
   <!-- Platform Response to Registration -->
   <RegistrationResponse>
       <Status>200</Status>  <!-- SUCCESS / use standard HTML response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status -->
-      <ServiceKey>MIIBIjANBgkqh....</ServiceKey> <!-- private key for any further communications between services and middleware -->
+      <SessionToken>eyJhbGciOi...</SessionToken>
       <Message>Registration successful.</Message>
   </RegistrationResponse>
 
 
 </Protocol>
+

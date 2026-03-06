@@ -1,0 +1,55 @@
+  <!-- Request a Format Conversion from a Registered Service -->
+  <ConversionRequest>
+    <ServiceID>service-1234</ServiceID>
+    <SessionToken>cvt-8b1d5d1d-4d11-4f34-9b69-0a3d91f1b7f1</SessionToken>
+
+    <!-- Origin/Destination formats -->
+    <OriginFormat extension=".ifc" mimetype="application/x-extension-ifc" />
+    <DestinationFormat extension=".glb" mimetype="model/gltf-binary" />
+
+    <!-- Input payload -->
+    <Source>
+      <LocalSource dimension="34567" extension=".ifc" filename="Museo_degli_Innocenti.ifc">
+        /9j/4AAQSkZJRgABAQEAYABgAAD/4QBiRXhpZgAATU0AKgAAAAgABwESA.. <!-- file blob coded in Base64 -->
+      </LocalSource>
+    </Source>
+
+    <!-- Optional conversion options -->
+    <Options>
+      <Option name="preserveMaterials" type="Boolean">True</Option> <!-- whether materials, textures, and visual appearance data are kept as faithfully as possible during conversion -->
+      <Option name="dracoCompression" type="Boolean">False</Option> <!-- apply Draco compression to the generated model -->
+      <Option name="scale" type="Float">1.0</Option> <!-- scale the model -->
+    </Options>
+    <Timestamp>2026-01-09T10:15:00Z</Timestamp>
+  </ConversionRequest>
+
+
+  <!-- Response to a Format Conversion Request -->
+  <ConversionResponse>
+    <ServiceID>service-1234</ServiceID>
+    <SessionToken>cvt-8b1d5d1d-4d11-4f34-9b69-0a3d91f1b7f1</SessionToken>
+    <Status>200</Status> <!-- use standard HTTP status codes -->
+    <Message>Conversion successful.</Message>
+
+    <ConvertedFile>
+      <!-- Base64 result -->
+      <LocalResult dimension="873796" extension=".glb" filename="Museo_degli_Innocenti.glb">
+        AAAAIGZ0eXBnb...
+      </LocalResult>
+
+      <!-- Optional URL result instead of LocalResult (or alongside it) -->
+      <UrlResult>
+        <Url>https://repository.com/converted/34e8d0ff01b099f5b9cd01efd8436ab9f20e7f98.glb</Url>
+        <ContentType>model/gltf-binary</ContentType>
+        <ContentLength>873796</ContentLength>
+        <Extension>.glb</Extension>
+      </UrlResult>
+    </ConvertedFile>
+
+    <!-- Optional metadata / diagnostics -->
+    <Warnings>
+      <Warning code="W001">Some IFC entities were skipped.</Warning>
+    </Warnings>
+
+    <Timestamp>2026-01-09T10:15:03Z</Timestamp>
+  </ConversionResponse>

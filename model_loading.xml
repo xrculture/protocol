@@ -1,66 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Protocol xmlns="http://example.com/service-protocol" version="1.0">
 
-  <!-- Request Model List for Cloud Loading (Middleware to Viewer)-->
+  <!-- Request Model List -->
   <ModelRequest>
     <ServiceID>service-1234</ServiceID>
-    <ServiceKey>MIIBIjANBgkqh....</ServiceKey> <!-- private key for any further communications between services and middleware -->
+    <SessionToken>MIIBIjANBgkqh....</SessionToken> 
     <Pagination value="True" start="0" length="20" /> <!-- if True set the start and the length of returned model list (base 0), otherwise request all available models -->
     <Filters>
       <Filter>
         <FileExtension>.ifc</FileExtension> <!-- if provided request only models with specific file extension -->
-        <ModelName>Museo degl*</ModelName> <!-- if provided request only models with specific name (special chars are admitted) -->
-      </Filter>
-      <Filter>
-        <FileExtension>.obj</FileExtension>
+        <SearchQuery>Museo</SearchQuery>
       </Filter>
     </Filters>
   <ModelRequest>
 
-  <!-- Response to Model List Request for Cloud Loading (Viewer to Middleware) -->
+  <!-- Response to Model List Request -->
   <ModelResponse>
     <ServiceID>service-1234</ServiceID>
-    <ServiceKey>MIIBIjANBgkqh....</ServiceKey> <!-- private key for any further communications between services and middleware -->
+    <SessionToken>MIIBIjANBgkqh....</SessionToken> 
+    <Status>200</Status> <!-- SUCCESS / use standard HTML response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status -->
     <Models>
-      <Model id="9f8d4a7be2c1743d76a1d39a6fc45ea56c63db6a763a0e944f88a1ffac7d39d2" name="Museo degli Innocenti"
-        filename="<filename of the model on the cloud storage>" dimension="34567" lastUpdate="2025-06-27T14:45:32Z"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit" />
+      <Model>
+        <Id>9f8d4a7be2c1743d76a1d39a6fc45ea56c63db6a763a0e944f88a1ffac7d39d2</Id>
+        <Title>Museo degli Innocenti</Title>
+        <Provider>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Provider>
+        <Rights>http://creativecommons.org/licenses/by-nc/4.0/</Rights>
+        <Preview>https://link.to.preview/thumbnail</Preview>
+        <MediaUrls>
+          <Url>https://test.org/34e8d0ff01b099f5b9cd01efd8436ab9f20e7f98.glb</Url>
+        </MediaUrls>
+        <Supported3DFiles>
+          <FileCandidate>
+            <Url>https://test.org/files/original/34e8d0ff01b099f5b9cd01efd8436ab9f20e7f98.glb</Url>
+            <ContentType>model/gltf-binary</ContentType>
+            <ContentLength>873796</ContentLength>
+            <Extension>.glb</Extension>
+          </FileCandidate>
+        </Supported3DFiles>
+      </Model>
     </Models>
   </ModelResponse>
 
   <!-- Contacting Viewer for Model Loading -->
   <ModelLoadingRequest>
     <ServiceID>service-1234</ServiceID>
-    <ServiceKey>MIIBIjANBgkqh....</ServiceKey> <!-- private key for any further communications between services and middleware -->
-    <Source> <!-- if both provided, local overrides cloud -->
-      <LocalSource>
-        <FileContent dimension="34567" extension=".ifc" filename="<filename of the model>" name="Museo degli Innocenti"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit"> <!-- file dimension in kB -->
+    <SessionToken>MIIBIjANBgkqh....</SessionToken> 
+    <Source> <!-- if both provided, local overrides cloud / file dimension in kB -->
+      <LocalSource dimension="34567" extension=".ifc" filename="<filename of the model>" name="Museo degli Innocenti"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit"> 
           /9j/4AAQSkZJRgABAQEAYABgAAD/4QBiRXhpZgAATU0AKgAAAAgABwESA.. <!-- file blob coded in Base64 -->
-        </FileContent>
       </LocalSource>
       <UrlSource>
         <FileExtension>.ifc</FileExtension>
         <FileDimension>35656</FileDimension>
         <Url>https://repository.com/modelXXX</Url>
       </UrlSource>
-      <CloudSource>
-        <ModelId>9f8d4a7be2c1743d76a1d39a6fc45ea56c63db6a763a0e944f88a1ffac7d39d2</ModelId>
-      <CloudSource>
     </Source>
     <SceneInit>
       <Zoom default="False">1.5</Zoom> <!-- Initial zoom value as float. The Default attribute overrides the value if set to True -->
       <Pan default="False">3.2,1.5,0.0</Pan> <!-- Initial pan value as a triple of floats. The Default attribute overrides the value if set to True -->
       <BackgroundColor default="False">DD2500</BackgroundColor> <!-- Initial background color value as a RGB. The Default attribute overrides the value if set to True -->
       <View default="False">Top</View> <!-- Initial view value as a string. The Default attribute overrides the value if set to True -->
-      <Lights default="False"></Lights> <!-- Initial lights value as a ??? (if supported by the viewer). The Default attribute overrides the value if set to True -->
+      <Lights default="False"></Lights> <!-- The Default attribute overrides the value if set to True -->
     </SceneInit>
   </ModelLoadingRequest>
 
   <!-- Viewer Response -->
   <ModelLoadingResponse>
       <Status>206</Status>  <!-- PARTIAL CONTENT / use standard HTML response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status -->
-      <ServiceKey>MIIBIjANBgkqh....</ServiceKey> <!-- private key for any further communications between services and middleware -->
+      <SessionToken>MIIBIjANBgkqh....</SessionToken> 
       <Message>Loading...</Message>
       <LoadedContent>1256</LoadedContent> <!-- loaded content so far in kB -->
       <Endpoint>https://viewer/models?id=kdsjbfkdjsbgldnsfldsnkfn</Endpoint> <!-- full link to the model inside the viewer -->
@@ -69,11 +77,10 @@
 
   <ModelLoadingResponse>
       <Status>200</Status>  <!-- SUCCESS / use standard HTML response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status -->
-      <ServiceKey>MIIBIjANBgkqh....</ServiceKey> <!-- private key for any further communications between services and middleware -->
+      <SessionToken>MIIBIjANBgkqh....</SessionToken> 
       <Message>Loading successful.</Message>
       <LoadedContent>34567</LoadedContent>
-      <Metadata>
-        <!-- Mandatory -->
+      <Metadata> <!-- List of metadata extracted from the model as a subset of the list of supported metadata exposed during the registration phase -->
           <MetadataElement name="rdf:resource" type="String" readonly="True">XXXXXXX</MetadataElement>
           <MetadataElement name="edm:type" type="URI" readonly="True">XXXXXXX</MetadataElement>
           <MetadataElement name="edm:aggregatedCHO" type="String" readonly="True">XXXXXXX</MetadataElement>
@@ -82,13 +89,9 @@
           <MetadataElement name="edm:rights" type="URI" readonly="True">XXXXXXX</MetadataElement>
           <MetadataElement name="dc:language" type="URI" readonly="True">XXXXXXX</MetadataElement>
           <MetadataElement name="dc:subject" type="String" readonly="True">XXXXXXX</MetadataElement>
-
-          <!-- Conditional (at least one out of two is required for each group)-->  
           <MetadataElement name="dcterms:spatial" type="String" readonly="True">XXXXXXX</MetadataElement>
           <MetadataElement name="dc:title" type="String" readonly="True">XXXXXXX</MetadataElement>
           <MetadataElement name="edm:isShownAt" type="URI" readonly="True">https://XXXXXX.YYYY/ZZZZ</MetadataElement>
-
-          <!-- Possible other non-mandatory metadata may follow -->
       </Metadata>
       <Endpoint>https://viewer/models?id=kdsjbfkdjsbgldnsfldsnkfn</Endpoint> <!-- full link to the model inside the viewer -->
   </ModelLoadingResponse>

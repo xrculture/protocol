@@ -1,0 +1,45 @@
+<!-- User asks the Viewer to perform a measurement inside the loaded model -->
+<MeasurementRequest>
+  <ViewerID>viewer-001</ViewerID>
+  <SessionToken>MIIBIjANBgkqh....</SessionToken>
+
+  <!-- Correlation id -->
+  <RequestID>msr-0a1f1b1b-7c2c-4b5a-9d84-49b6a7ab5d0c</RequestID>
+
+  <!-- Measurement tool definition -->
+  <Measurement>
+    <Tool name="Distance" unit="m" precision="0.00" />
+    <!-- Inputs for the tool -->
+    <Points>
+      <Point id="p1"><World x="12.345" y="1.230" z="4.560" /></Point>
+      <Point id="p2"><World x="15.100" y="1.230" z="4.560" /></Point>
+    </Points>
+  </Measurement>
+
+  <Timestamp>2026-01-09T10:45:00Z</Timestamp>
+</MeasurementRequest>
+
+<!-- Viewer reports back the measurement result and whether it updated the scene -->
+<MeasurementResponse>
+  <ViewerID>viewer-001</ViewerID>
+  <SessionToken>MIIBIjANBgkqh....</SessionToken>
+  <RequestID>msr-0a1f1b1b-7c2c-4b5a-9d84-49b6a7ab5d0c</RequestID>
+  <Status>200</Status>
+  <Message>Measurement computed successfully.</Message>
+  <ExecutionStatus>SUCCESS</ExecutionStatus> <!-- ACCEPTED | IN_PROGRESS | SUCCESS | FAILED -->
+
+  <MeasurementResult>
+    <Tool name="Distance" unit="m" precision="0.00" />
+
+    <!-- The actual value (already rounded according to precision) -->
+    <Value>2.76</Value>
+
+    <!-- Echo the points used (useful for audit / export) -->
+    <Points>
+      <Point id="p1"><World x="12.345" y="1.230" z="4.560" /></Point>
+      <Point id="p2"><World x="15.100" y="1.230" z="4.560" /></Point>
+    </Points>
+  </MeasurementResult>
+
+  <Timestamp>2026-01-09T10:45:01Z</Timestamp>
+</MeasurementResponse>

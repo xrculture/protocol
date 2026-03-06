@@ -1,0 +1,78 @@
+<!-- Request to Publish a 3D Model on an External Platform (e.g., Europeana) -->
+<PublicationRequest>
+  <ServiceID>service-1234</ServiceID>
+  <SessionToken>pub-3c7f4d2a-28de-4a68-8f56-2d3f1a6a2b57</SessionToken>
+
+  <!-- Requested target platform -->
+  <TargetPlatform id="Europeana">
+    <PlatformOptions>
+      <Option name="collection" type="String">MyMuseumCollection</Option>
+      <Option name="visibility" type="String">public</Option>
+      <Option name="license" type="String">CC-BY-4.0</Option>
+    </PlatformOptions>
+  </TargetPlatform>
+
+  <!-- Model payload -->
+  <Source>
+    <LocalSource dimension="34567" extension=".glb" filename="artifact.glb" name="Artifact 3D Model" description="3D scan of artifact">
+      AAAAIGZ0eXBnb...  <!-- Base64 blob -->
+    </LocalSource>
+  </Source>
+
+  <!-- Optional descriptive metadata for publication -->
+  <Metadata>
+    <Title>Bronze Statue 3D Model</Title>
+    <Description>Digitized bronze statue, high-resolution scan.</Description>
+    <Creator>My Museum</Creator>
+    <DateCreated>2025-11-02</DateCreated>
+    <Language>en</Language>
+    <PreviewImage> <!-- Only one option allowed (Url or FileContent) -->
+        <Url>https://link.to.preview/thumbnail</Url>
+        <FileContent>AAAAIGZ0eXBnb...</FileContent>  <!-- Base64 blob -->
+    </PreviewImage>
+    <Keywords>
+      <Keyword>bronze</Keyword>
+      <Keyword>statue</Keyword>
+      <Keyword>3D</Keyword>
+    </Keywords>
+    <Attribution>My Museum, 2026</Attribution>
+  </Metadata>
+
+  <Timestamp>2026-01-09T10:20:00Z</Timestamp>
+</PublicationRequest>
+
+<!-- Response to PublicationRequest -->
+<PublicationResponse>
+  <ServiceID>service-1234</ServiceID>
+  <SessionToken>pub-3c7f4d2a-28de-4a68-8f56-2d3f1a6a2b57</SessionToken>
+  <Status>202</Status> <!-- Use HTTP-like codes -->
+  <Message>Publication accepted and queued.</Message>
+
+  <!-- Publication lifecycle -->
+  <PublicationStatus>IN_PROGRESS</PublicationStatus> <!-- Suggested enum values: ACCEPTED | IN_PROGRESS | SUCCESS | FAILED -->
+
+  <!-- Job id for polling / tracking -->
+  <PublicationJobID>europeana-job-8891</PublicationJobID>
+
+  <!-- Echo target platform -->
+  <TargetPlatform id="Europeana" />
+
+  <!-- If PublicationStatus is SUCCESS, provide identifiers/links -->
+  <Result>
+    <PlatformItemID>20260109-XYZ-123</PlatformItemID>
+    <PublicUrl>https://www.europeana.eu/item/20260109-XYZ-123</PublicUrl>
+  </Result>
+
+  <!-- Diagnostics -->
+  <Warnings>
+    <!-- optional -->
+  </Warnings>
+
+  <Errors>
+    <!-- present when PublicationStatus is FAILED -->
+    <Error code="E-PUB-401">Authentication failed for target platform.</Error>
+  </Errors>
+
+  <Timestamp>2026-01-09T10:20:01Z</Timestamp>
+</PublicationResponse>
+

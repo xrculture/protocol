@@ -1,0 +1,62 @@
+<!-- User asks a Viewer to query/act on the currently loaded model -->
+<QueryRequest>
+  <ViewerID>viewer-001</ViewerID>
+  <SessionToken>MIIBIjANBgkqh....</SessionToken>
+  <RequestID>qry-2cbb3c34-9b6f-4f9c-b3f9-7b2c9c7c13aa</RequestID>
+  <Query>
+    <!-- One of: DSL | Structured | NaturalLanguage -->
+    <QueryType>Structured</QueryType>
+
+    <!-- Example: "highlight all the IfcWalls inside the model" -->
+    <!-- Target selector -->
+    <Selector>
+      <EntityType schema="IFC">IfcWall</EntityType>
+      <Filter name="Storey">Level 1</SpatialFilter>
+    </Selector>
+
+    <!-- Optional visualization parameters -->
+    <Presentation>
+      <Emphasis>Outline</Emphasis> 
+      <Color>#FFCC00</Color> 
+      <Opacity>0.35</Opacity>
+      <ZoomToSelection value="True" />
+    </Presentation>
+  </Query>
+  <Timestamp>2026-01-09T10:35:00Z</Timestamp>
+</QueryRequest>
+
+<!-- Viewer reports back the result of applying the query and updating the scene -->
+<QueryResponse>
+  <ViewerID>viewer-001</ViewerID>
+  <SessionToken>MIIBIjANBgkqh....</SessionToken>
+  <RequestID>qry-2cbb3c34-9b6f-4f9c-b3f9-7b2c9c7c13aa</RequestID>
+  <Status>200</Status> <!-- HTTP-like status code -->
+  <Message>Query executed. 128 elements highlighted.</Message>
+
+  <!-- Query lifecycle -->
+  <ExecutionStatus>SUCCESS</ExecutionStatus> <!-- Enum values: ACCEPTED | IN_PROGRESS | SUCCESS | FAILED -->
+  
+  <!-- Optional query results -->
+  <Results>
+    <MatchedCount>128</MatchedCount>
+
+    <!-- Optional: return identifiers for selected items -->
+    <SelectionIDs>
+      <ID scheme="IFCGlobalId">2x$QmYhPj9kQ2bH9m6H7xD</ID>
+      <ID scheme="IFCGlobalId">0KJ9Hj2l5C0uYl3eQwR8cN</ID>
+      <!-- ... -->
+    </SelectionIDs>
+  </Results>
+
+  <!-- Diagnostics -->
+  <Warnings>
+    <!-- optional -->
+  </Warnings>
+
+  <Errors>
+    <!-- present when FAILED -->
+    <Error code="E-QRY-404">EntityType IfcWall not found in schema context.</Error>
+  </Errors>
+
+  <Timestamp>2026-01-09T10:35:01Z</Timestamp>
+</QueryResponse>
