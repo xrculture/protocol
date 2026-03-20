@@ -52,7 +52,7 @@
           <MetadataElement name="dc:language" type="URI" readonly="True" />
           <MetadataElement name="dc:subject" type="String" readonly="True" />
 
-          <!-- Conditional (at least one out of two is required for each group)-->  
+          <!-- Conditional (at least one out of two is required for each group)-->
           <MetadataElement name="dcterms:spatial" type="String" readonly="True" />
           <MetadataElement name="dcterms:temporal" type="Date" readonly="True" />
 
@@ -64,22 +64,22 @@
 
           <!-- Non Mandatory -->
           <!-- identity -->
-          <MetadataElement name="dc:identifier" type="String" readonly="True" />    
-          <MetadataElement name="dc:creator" type="String" readonly="True" />       
-          <MetadataElement name="dcterms:created" type="date" readonly="True" />      
-          <MetadataElement name="dc:contributor" type="String" readonly="True" /> 
-          <MetadataElement name="dc:publisher" type="String" readonly="True" /> 
+          <MetadataElement name="dc:identifier" type="String" readonly="True" />
+          <MetadataElement name="dc:creator" type="String" readonly="True" />
+          <MetadataElement name="dcterms:created" type="date" readonly="True" />
+          <MetadataElement name="dc:contributor" type="String" readonly="True" />
+          <MetadataElement name="dc:publisher" type="String" readonly="True" />
 
           <!-- Creation Context -->
           <MetadataElement name="creationProcess" type="String" readonly="True" />
           <MetadataElement name="creationDescription" type="String" readonly="True" />
-          <MetadataElement name="dc:provenance" type="String" readonly="True" />   
+          <MetadataElement name="dc:provenance" type="String" readonly="True" />
 
           <!-- Relationships -->
           <MetadataElement name="dc:source" type="URI" readonly="True" />
           <MetadataElement name="dc:relation" type="URI" readonly="True" />
-          <MetadataElement name="dcterms:isPartOf" type="URI" readonly="True" />      
-          <MetadataElement name="dcterms:hasPart" type="URI" readonly="True" />       
+          <MetadataElement name="dcterms:isPartOf" type="URI" readonly="True" />
+          <MetadataElement name="dcterms:hasPart" type="URI" readonly="True" />
           <MetadataElement name="dcterms:isFormatOf" type="URI" readonly="True" />
           <MetadataElement name="dcterms:isReferencedBy" type="URI" readonly="True" />
           <MetadataElement name="dcterms:isReplacedBy" type="URI" readonly="True" />
@@ -88,50 +88,50 @@
           <MetadataElement name="dcterms:replaces" type="String" readonly="True" />
           <MetadataElement name="dcterms:requires" type="String" readonly="True" />
           <MetadataElement name="dcterms:hasPart" type="URI" readonly="True" />
-          <MetadataElement name="dcterms:hasVersion" type="String" readonly="True" /> 
+          <MetadataElement name="dcterms:hasVersion" type="String" readonly="True" />
           <MetadataElement name="edm:isRelatedTo" type="URI" readonly="True" />
           <MetadataElement name="edm:isRepresentationOf" type="URI" readonly="True" />
           <MetadataElement name="edm:isSimilarTo" type="URI" readonly="True" />
-          <MetadataElement name="edm:isSuccessorOf" type="URI" readonly="True" />         
+          <MetadataElement name="edm:isSuccessorOf" type="URI" readonly="True" />
           <MetadataElement name="edm:incorporates" type="String" readonly="True" />
           <MetadataElement name="edm:isDerivativeOf" type="String" readonly="True" />
-          <MetadataElement name="edm:IsNextInSequence" type="Integer" readonly="True" />      
+          <MetadataElement name="edm:IsNextInSequence" type="Integer" readonly="True" />
 
           <!-- Media / Format -->
           <MetadataElement name="dc:format" type="URI" readonly="True" />
-          <MetadataElement name="dcterms:hasFormat" type="String" readonly="True" /> 
-          <MetadataElement name="edm:hasType" type="String" readonly="True" />            
-          <MetadataElement name="isDownloadable" type="Boolean" readonly="True" />    
-          <MetadataElement name="dc:accessRights" type="String" readonly="True" /> 
+          <MetadataElement name="dcterms:hasFormat" type="String" readonly="True" />
+          <MetadataElement name="edm:hasType" type="String" readonly="True" />
+          <MetadataElement name="isDownloadable" type="Boolean" readonly="True" />
+          <MetadataElement name="dc:accessRights" type="String" readonly="True" />
 
           <!-- Location / Time -->
           <MetadataElement name="dc:date" type="Date" readonly="True" />
-          <MetadataElement name="edm:currentLocation" type="String" readonly="True" />   
-          <MetadataElement name="periods" type="String" readonly="True" />  
+          <MetadataElement name="edm:currentLocation" type="String" readonly="True" />
+          <MetadataElement name="periods" type="String" readonly="True" />
 
           <!-- Technical -->
           <MetadataElement name="faceCount" type="Integer" readonly="True" />
           <MetadataElement name="vertexCount" type="Integer" readonly="True" />
           <MetadataElement name="textureCount" type="Integer" readonly="True" />
           <MetadataElement name="materialCount" type="Integer" readonly="True" />
-          <MetadataElement name="polygonType" type="String" readonly="True" />   
-          <MetadataElement name="dimension" type="String" readonly="True" />     
-          <MetadataElement name="units" type="String" readonly="True" />         
+          <MetadataElement name="polygonType" type="String" readonly="True" />
+          <MetadataElement name="dimension" type="String" readonly="True" />
+          <MetadataElement name="units" type="String" readonly="True" />
 
-          <!-- Other -->          
+          <!-- Other -->
           <MetadataElement name="dcterms:alternative" type="String" readonly="True" />
           <MetadataElement name="dcterms:conformsTo" type="URI" readonly="True" />
-          <MetadataElement name="dcterms:extent" type="Integer" readonly="True" /> 
+          <MetadataElement name="dcterms:extent" type="Integer" readonly="True" />
           <MetadataElement name="dcterms:issued" type="Date" readonly="True" />
           <MetadataElement name="dcterms:medium" type="String" readonly="True" />
           <MetadataElement name="dcterms:provenance" type="String" readonly="True" />
           <MetadataElement name="dcterms:references" type="String" readonly="True" />
           <MetadataElement name="dcterms:tableOfContents" type="String" readonly="True" />
-          <MetadataElement name="edm:hasMet" type="String" readonly="True" />       
+          <MetadataElement name="edm:hasMet" type="String" readonly="True" />
           <MetadataElement name="edm:realizes" type="String" readonly="True" />
           <MetadataElement name="owl:sameAs" type="String" readonly="True" />
           <MetadataElement name="edm:hasView" type="Boolean" readonly="True" />
-          <MetadataElement name="edm:preview" type="String" readonly="True" /> 
+          <MetadataElement name="edm:preview" type="String" readonly="True" />
           <MetadataElement name="edm:object" type="String" readonly="True" />
           <MetadataElement name="edm:intermediateProvider" type="String" readonly="True" />
           <MetadataElement name="edm:ugc" type="String" readonly="True" />
@@ -150,7 +150,7 @@
           <Format extensione=".las" mimetype="application/vnd.las" native="False" />
           <Format extensione=".laz" mimetype="application/vnd.laszip" native="False" />
           <Format extensione=".e57" mimetype="model/e57" native="False" />
-          <Format extensione=".dxf" mimetype="image/vnd.dxf" native="False" />   
+          <Format extensione=".dxf" mimetype="image/vnd.dxf" native="False" />
           <Format extensione=".stl" mimetype="model/stl" native="False" />
           <Format extensione=".igs" mimetype="model/iges" native="False" />
           <Format extensione=".wrl" mimetype="model/vrml" native="False" />
@@ -164,7 +164,7 @@
 
           <Format extensione=".stp" mimetype="model/step" native="False" />
           <Format extensione=".stp" mimetype="model/step+xml" native="False" />
-          <Format extensione=".stp" mimetype="model/step+zip" native="False" />         
+          <Format extensione=".stp" mimetype="model/step+zip" native="False" />
 
           <!-- No official IANA; using Common/De facto from 3D-4CH D3.1 (Annex 3) -->
           <Format extensione=".xyz" mimetype="text/plain" native="False" />
@@ -193,7 +193,7 @@
           <Search name="OpenSearch" />
         </FullText>
         <Protocols>
-          <Protocol value="oEmbed" endpoint="https://viewer.response.org/oembed/" />
+          <Protocol>oEmbed</Protocol>
         </Protocols>
         <Authentication> <!-- Authentication Protocols -->
           <Protocol name="oAuth" />
@@ -218,7 +218,7 @@
         <WebBrowsers>
           <WebBrowser name="Chrome" version="120.0.0.0" device="Windows" userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" />
           <WebBrowser name="Safari" version="604.1" device="iPhone" userAgent="Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1" />
-          <WebBrowser name="Firefox" version="121.0" device="Linux" userAgent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0" />       
+          <WebBrowser name="Firefox" version="121.0" device="Linux" userAgent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0" />
         </WebBrowsers>
         <Scene> <!-- Scene Setup and Update -->
           <Autoload value="True" /> <!-- autoload asset on initialization, default is false (Rene (Arctur)) -->
@@ -389,4 +389,3 @@
 
 
 </Protocol>
-

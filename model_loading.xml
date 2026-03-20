@@ -4,7 +4,7 @@
   <!-- Request Model List -->
   <ModelRequest>
     <ServiceID>service-1234</ServiceID>
-    <SessionToken>MIIBIjANBgkqh....</SessionToken> 
+    <SessionToken>MIIBIjANBgkqh....</SessionToken>
     <Pagination value="True" start="0" length="20" /> <!-- if True set the start and the length of returned model list (base 0), otherwise request all available models -->
     <Filters>
       <Filter>
@@ -17,7 +17,7 @@
   <!-- Response to Model List Request -->
   <ModelResponse>
     <ServiceID>service-1234</ServiceID>
-    <SessionToken>MIIBIjANBgkqh....</SessionToken> 
+    <SessionToken>MIIBIjANBgkqh....</SessionToken>
     <Status>200</Status> <!-- SUCCESS / use standard HTML response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status -->
     <Models>
       <Model>
@@ -44,10 +44,10 @@
   <!-- Contacting Viewer for Model Loading -->
   <ModelLoadingRequest>
     <ServiceID>service-1234</ServiceID>
-    <SessionToken>MIIBIjANBgkqh....</SessionToken> 
+    <SessionToken>MIIBIjANBgkqh....</SessionToken>
     <Source> <!-- if both provided, local overrides cloud / file dimension in kB -->
       <LocalSource dimension="34567" extension=".ifc" filename="<filename of the model>" name="Museo degli Innocenti"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit"> 
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit">
           /9j/4AAQSkZJRgABAQEAYABgAAD/4QBiRXhpZgAATU0AKgAAAAgABwESA.. <!-- file blob coded in Base64 -->
       </LocalSource>
       <UrlSource>
@@ -63,21 +63,22 @@
       <View default="False">Top</View> <!-- Initial view value as a string. The Default attribute overrides the value if set to True -->
       <Lights default="False"></Lights> <!-- The Default attribute overrides the value if set to True -->
     </SceneInit>
+    <oEmbed>True</oEmbed> <!-- Type of requested endpoint. If set to True is the oEmbed endpoint. Otherwise the default one. If the viewer does not support the oEmbed protocol the field should be ignored -->
   </ModelLoadingRequest>
 
   <!-- Viewer Response -->
   <ModelLoadingResponse>
       <Status>206</Status>  <!-- PARTIAL CONTENT / use standard HTML response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status -->
-      <SessionToken>MIIBIjANBgkqh....</SessionToken> 
+      <SessionToken>MIIBIjANBgkqh....</SessionToken>
       <Message>Loading...</Message>
       <LoadedContent>1256</LoadedContent> <!-- loaded content so far in kB -->
-      <Endpoint>https://viewer/models?id=kdsjbfkdjsbgldnsfldsnkfn</Endpoint> <!-- full link to the model inside the viewer -->
+      <Endpoint>https://viewer/models?id=kdsjbfkdjsbgldnsfldsnkfn</Endpoint> <!-- full link to the model inside the viewer (if oEmbed was set to True, this is the oEmbed endpoint) -->
   </ModelLoadingResponse>
 
 
   <ModelLoadingResponse>
       <Status>200</Status>  <!-- SUCCESS / use standard HTML response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status -->
-      <SessionToken>MIIBIjANBgkqh....</SessionToken> 
+      <SessionToken>MIIBIjANBgkqh....</SessionToken>
       <Message>Loading successful.</Message>
       <LoadedContent>34567</LoadedContent>
       <Metadata> <!-- List of metadata extracted from the model as a subset of the list of supported metadata exposed during the registration phase -->
